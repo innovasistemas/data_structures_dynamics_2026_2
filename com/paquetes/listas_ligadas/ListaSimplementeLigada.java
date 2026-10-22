@@ -72,8 +72,55 @@ public class ListaSimplementeLigada
         }
     }
 
-    // public NodoLSL buscarNodo(int dato)
-    // {
+    public NodoLSL buscarNodo(int dato)
+    {
+        NodoLSL temp = cabeza;
+        while (temp != null) {
+            if (temp.info == dato) {
+                return temp;
+            } else {
+                temp = temp.liga;
+            }
+        }
+        return null;
+    }
 
-    // }
+    public void modificarNodo(NodoLSL dir, int dato)
+    {
+        dir.info = dato;
+    }
+
+    public void insertarNodoDespues(NodoLSL dir, int dato)
+    {
+        NodoLSL nuevo = new NodoLSL();
+        nuevo.info = dato;
+        nuevo.liga = dir.liga;
+        dir.liga = nuevo;
+        n++;
+    }
+
+    public boolean eliminarNodo(int dato)
+    {
+        NodoLSL anterior, actual;
+        boolean bandera = false;
+        if (cabeza.info == dato) {
+            cabeza = cabeza.liga;
+            bandera = true;
+            n--;
+        } else {
+            anterior = cabeza;
+            actual = cabeza.liga;
+            while (!bandera && actual != null) {
+                if (actual.info == dato) {
+                    anterior.liga = actual.liga;
+                    bandera = true;
+                    n--;
+                } else {
+                    anterior = anterior.liga;
+                    actual = actual.liga;
+                }
+            }
+        }
+        return bandera;
+    }
 }
