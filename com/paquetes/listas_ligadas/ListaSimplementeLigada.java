@@ -123,4 +123,21 @@ public class ListaSimplementeLigada
         }
         return bandera;
     }
+
+    public void ordenacionBurbuja()
+    {
+        NodoLSL actual = cabeza;
+        NodoLSL siguiente;
+        int aux;
+        while (actual.liga != null) {
+            siguiente = actual.liga;
+            while (siguiente != null) {
+                if (actual.info > siguiente.info) {
+                    aux = actual.info;
+                    actual.info = siguiente.info;
+                    siguiente.info = aux;
+                }
+            }
+        }
+    }
 }
