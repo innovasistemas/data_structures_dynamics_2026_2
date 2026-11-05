@@ -72,6 +72,14 @@ public class ListaSimplementeLigada
         }
     }
 
+    public void imprimirLSLRecursiva(NodoLSL p) 
+    {
+        if (p != null) {
+            imprimirLSLRecursiva(p.liga);
+            System.out.println(p.info);
+        }
+    }
+
     public NodoLSL buscarNodo(int dato)
     {
         NodoLSL temp = cabeza;
