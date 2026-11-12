@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import com.paquetes.listas_ligadas.*;
 import com.paquetes.recursividad.*;
+import com.paquetes.arboles.*;;
 
 public class Main
 {
@@ -14,6 +15,7 @@ public class Main
             System.out.println("0. Salir");
             System.out.println("1. Listas Simplemente Ligadas (LSL)");
             System.out.println("2. Recursión");
+            System.out.println("3. Árboles binarios");
             System.out.print("Ingrese su opción: ");
             opcion = input.next();
             switch (opcion) {
@@ -25,6 +27,9 @@ public class Main
                     break;
                 case "2":
                     menuRecursion();
+                    break;
+                case "3":
+                    menuArboles();
                     break;
                 default:
                     System.out.println("Opción no válida\n");
@@ -109,7 +114,85 @@ public class Main
                         System.out.println("Debe ingresar un n mayor o igual a uno");
                     }
                     break;
-                
+                default:
+                    System.out.println("Opción no válida\n");
+            }
+        } while (!opc.equals("0"));
+    }
+
+    public static void menuArboles() 
+    {
+        String opc;
+        Arbol arbol = new Arbol();
+        do {
+            System.out.println("Menú Árboles");
+            System.out.println("0. Regresar");
+            System.out.println("1. Crear árbol");
+            System.out.println("2. Preorden");
+            System.out.println("3. Inorden");
+            System.out.println("4. Postorden");
+            System.out.println("5. Contar nodos");
+            System.out.println("6. Sumar nodos");
+            System.out.println("7. Promedio árbol");
+            System.out.println("8. Contar hojas");
+            System.out.print("Ingrese su opción: ");
+            opc = input.next();
+            switch (opc) {
+                case "0":
+                    break;
+                case "1":
+                    arbol.raiz = new NodoArbol();
+                    arbol.cargarNodo(arbol.raiz);
+                    break;
+                case "2":
+                    if (arbol.raiz != null) {
+                        arbol.preorden(arbol.raiz);
+                    } else {
+                        System.out.println("Árbol vacío");
+                    }
+                    break;
+                case "3":
+                    if (arbol.raiz != null) {
+                        arbol.inorden(arbol.raiz);
+                    } else {
+                        System.out.println("Árbol vacío");
+                    }
+                    break;
+                case "4":
+                    if (arbol.raiz != null) {
+                        arbol.postorden(arbol.raiz);
+                    } else {
+                        System.out.println("Árbol vacío");
+                    }
+                    break;
+                case "5":
+                    if (arbol.raiz != null) {
+                        System.out.println("Total nodos: " + arbol.contarNodos(arbol.raiz));
+                    } else {
+                        System.out.println("Árbol vacío");
+                    }
+                    break;
+                case "6":
+                    if (arbol.raiz != null) {
+                        System.out.println("Suma nodos: " + arbol.sumarNodos(arbol.raiz));
+                    } else {
+                        System.out.println("Árbol vacío");
+                    }
+                    break;
+                case "7":
+                    if (arbol.raiz != null) {
+                        System.out.println("Promedio árbol: " + arbol.promedioArbol());
+                    } else {
+                        System.out.println("Árbol vacío");
+                    }
+                    break;
+                case "8":
+                    if (arbol.raiz != null) {
+                        System.out.println("Total hojas: " + arbol.contarHojas(arbol.raiz));
+                    } else {
+                        System.out.println("Árbol vacío");
+                    }
+                    break;
                 default:
                     System.out.println("Opción no válida\n");
             }
